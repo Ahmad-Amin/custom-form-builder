@@ -5,7 +5,7 @@ import { CheckCircleIcon } from "@heroicons/react/24/outline";
 const Plans = () => {
   return (
     <div id='pricing' className=' my-16'>
-      <h2 className=' text-primaryText font-semibold text-2xl md:text-3xl text-center mt-24'>The Right Plan for Your Business</h2>
+      <h2 className=' text-primaryText font-semibold text-2xl md:text-3xl text-center mt-24 px-3 md:px-0'>The Right Plan for Your Business</h2>
       <p className=" text-secondaryText md:w-6/12 mx-auto text-center p-3">
         We have several powerful plans to showcase your business and get discovered
         as a creative entrepreneurs. Everything you need.
