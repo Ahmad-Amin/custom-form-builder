@@ -2,8 +2,8 @@
 import Image from "next/image";
 import React from "react";
 
-import OfficeWorkingAnimation from "@/app/animations/office-working.json";
-import OfficeWorkingAnimation2 from "@/app/animations/office-working2.json";
+import OfficeWorkingAnimation from "../../app/animations/office-working.json";
+import OfficeWorkingAnimation2 from "../../app/animations/office-working2.json";
 import dynamic from "next/dynamic";
 const Lottie = dynamic(() => import("lottie-react"), {
   ssr: false,
