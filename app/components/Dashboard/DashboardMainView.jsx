@@ -273,7 +273,7 @@ const DashboardMainView = () => {
 
   return (
     <ChakraProvider>
-      <div className=" p-8">
+      <div className=" p-3 md:p-8">
         <div className=" flex flex-row justify-between mb-8 ">
           <div className="text-[#2E4F4F] font-bold text-xl items-center justify-center flex">
             Custom Form Builder
@@ -283,10 +283,10 @@ const DashboardMainView = () => {
           </button>
         </div>
         <DragDropContext onDragEnd={onDragEnd}>
-          <Flex>
+          <div className=" flex flex-col md:flex-row">
             <Droppable droppableId="sidebar" type="field">
               {(provided) => (
-                <div className=" w-72">
+                <div className=" md:w-72 w-full">
                   <FieldSidebar
                     innerRef={provided.innerRef}
                     {...provided.droppableProps}
@@ -355,7 +355,7 @@ const DashboardMainView = () => {
                                   <Button
                                     onClick={() => removeGroup(groupIndex)}
                                     ml="10px"
-                                    className="!bg-[#0E8388] !text-white py-2 px-4 rounded"
+                                    className="!bg-[#0E8388] !text-white !text-sm md:!text-base py-2 px-4 rounded"
                                   >
                                     Remove Section
                                   </Button>
@@ -486,7 +486,7 @@ const DashboardMainView = () => {
             <Box flex="1" p="4">
               <FormPreview formFields={formFields} />
             </Box>
-          </Flex>
+          </div>
         </DragDropContext>
 
         <StylingPanel
