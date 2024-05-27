@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.slick-dots li button {
+  background-color: #0E8388 !important;
+}
+
+.custom-carousel .slick-dots li.slick-active button {
+  background-color: rgb(4, 0, 255); /* Color for the active navigation dot */
+}
+
+html {
+  scroll-behavior: smooth;
+}

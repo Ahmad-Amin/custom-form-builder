@@ -1,4 +1,5 @@
 import { Comfortaa } from "next/font/google";
+import { ConfigProvider } from "antd";
 import "./globals.css";
 
 const comfortaa = Comfortaa({ subsets: ["latin"] });
@@ -10,8 +11,17 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={comfortaa.className}>{children}</body>
-    </html>
+    <ConfigProvider
+    theme={{
+      token: {
+        fontFamily: comfortaa.style.fontFamily
+      }
+    }}
+    >
+      <html lang="en">
+        <body className={comfortaa.className}>{children}</body>
+      </html>
+    </ConfigProvider>
+
   );
 }

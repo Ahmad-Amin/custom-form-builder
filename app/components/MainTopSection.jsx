@@ -6,7 +6,7 @@ import Typewriter from "typewriter-effect";
 
 const MainTopSection = () => {
   return (
-    <div className=" flex justify-center mt-24">
+    <div className=" flex justify-center mt-8 md:mt-24">
       <div className=" flex flex-col gap-3">
         <div className="max-w-[900px] h-auto mx-auto">
           <Image
@@ -30,7 +30,7 @@ const MainTopSection = () => {
         </div>
         <p className=" mt-4 text-sm p-4 w-full md:w-9/12 mx-auto text-center text-[#888888]">
           This is not just a boiler plate, Visually create the form with
-          included functionality and then export the form as a React Component
+          included functionality and then export the form as a <strong className=" font-extrabold bg-[#CBE4DE] p-1 text-[#0E8388]">React Component</strong>
         </p>
         <div className=" flex justify-center mt-8">
           <button className="bg-[#0E8388] hover:bg-[#246c6e] transform transition-all duration-150 text-white rounded-md py-2 px-5 w-auto shadow-lg">
