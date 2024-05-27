@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <div className=" flex flex-col md:flex-row justify-between p-6 md:p-8 md:px-20">
       <div className=" flex flex-row justify-between">
-        <div className="text-[#2E4F4F] font-bold text-xl items-center justify-center flex">
+        <div className="text-[#2E4F4F] font-extrabold text-2xl items-center justify-center flex">
           Custom Form Builder
         </div>
         <div className=" md:hidden">

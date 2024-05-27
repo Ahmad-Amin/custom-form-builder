@@ -18,7 +18,7 @@ const getGridClass = (fieldCount) => {
 const FormPreview = ({ formFields }) => {
   return (
     <>
-      <h1 className=" text-2xl font-bold text-center">Form Preview</h1>
+      <h1 className=" text-2xl font-bold text-center">Live Form Preview</h1>
       <form className="bg-white p-6 rounded-lg shadow-md">
         {formFields.map((group, groupIndex) => (
           <div

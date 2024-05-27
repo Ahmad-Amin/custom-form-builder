@@ -26,8 +26,10 @@ import StylingPanel from "./StylingPanel";
 import FormPreview from "./FormPreview";
 import FieldSidebar from "./FieldSiderbar";
 import { generateFormCode } from "../utils/generateCode";
+import { useRouter } from "next/navigation";
 
 const DashboardMainView = () => {
+  const router = useRouter()
   const [formFields, setFormFields] = useState([{ id: uuidv4(), fields: [] }]);
   const [selectedElement, setSelectedElement] = useState(null);
   const [selectedElementIndex, setSelectedElementIndex] = useState(null);
@@ -271,14 +273,18 @@ const DashboardMainView = () => {
     }
   };
 
+  const handleLogOut = () => {
+    router.push('/')
+  }
+
   return (
-    <ChakraProvider>
+    <>
       <div className=" p-3 md:p-8">
         <div className=" flex flex-row justify-between mb-8 ">
-          <div className="text-[#2E4F4F] font-bold text-xl items-center justify-center flex">
+          <div className="text-[#2E4F4F] font-extrabold text-2xl items-center justify-center flex">
             Custom Form Builder
           </div>
-          <button className="bg-[#0E8388] hover:bg-[#246c6e] transform transition-all duration-150 text-white rounded-md py-1 px-5 w-auto shadow-lg">
+          <button onClick={handleLogOut} className="bg-[#0E8388] hover:bg-[#246c6e] transform transition-all duration-150 text-white rounded-md py-1 px-5 w-auto shadow-lg">
             Log Out
           </button>
         </div>
@@ -589,7 +595,7 @@ const DashboardMainView = () => {
           </ModalContent>
         </Modal>
       </div>
-    </ChakraProvider>
+    </>
   );
 };
 
