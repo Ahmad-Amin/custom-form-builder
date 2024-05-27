@@ -37,8 +37,8 @@ const MainTopSection = () => {
             Register Now
           </button>
         </div>
-        <div className="flex flex-row flex-wrap items-center justify-center gap-3 md:gap-10 mt-16">
-          <div className=" max-w-28 max-h-28">
+        <div className="flex flex-row flex-wrap items-center justify-center gap-3 md:gap-10 mt-5 md:mt-16">
+          <div className=" md:max-w-28 w-16 h-16 md:max-h-28">
             <Image
               src="/react.svg"
               width={100}
@@ -47,7 +47,7 @@ const MainTopSection = () => {
               alt="React"
             />
           </div>
-          <div className=" max-w-28 max-h-28">
+          <div className=" md:max-w-28 w-16 h-16 md:max-h-28">
             <Image
               src="/tailwind.svg"
               width={100}
@@ -56,7 +56,7 @@ const MainTopSection = () => {
               alt="Tailwind"
             />
           </div>
-          <div className=" max-w-28 max-h-28">
+          <div className=" md:max-w-28 w-16 h-16 md:max-h-28">
             <Image
               src="/javascript.svg"
               width={100}
@@ -65,7 +65,7 @@ const MainTopSection = () => {
               alt="JavaScript"
             />
           </div>
-          <div className=" max-w-28 max-h-28">
+          <div className=" md:max-w-28 w-16 h-16 md:max-h-28">
             <Image
               src="/css.svg"
               width={100}
@@ -74,7 +74,7 @@ const MainTopSection = () => {
               alt="CSS"
             />
           </div>
-          <div className=" max-w-28 max-h-28">
+          <div className=" md:max-w-28 w-16 h-16 md:max-h-28">
             <Image
               src="/next.svg"
               width={100}
