@@ -2,7 +2,7 @@ import React from "react";
 
 const FooterSection = () => {
   return (
-    <div className="bg-[#CBE4DE] py-20">
+    <div className="bg-[#CBE4DE] py-20 px-6">
       <div>
         <p className=" text-center text-sm mb-4 text-[#2E4F4F]">
           GRAB ARRAY FOR BEST PRICE TODAY
