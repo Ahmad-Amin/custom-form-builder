@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const Header = () => {
   const [showNavigation, setShowNavigation] = useState(false);
@@ -21,16 +22,12 @@ const Header = () => {
           <Bars3Icon
             onClick={() => setShowNavigation(true)}
             width={25}
-            className={`font-semibold ${
-              showNavigation ? "hidden" : "block"
-            }`}
+            className={`font-semibold ${showNavigation ? "hidden" : "block"}`}
           />
           <XMarkIcon
             onClick={() => setShowNavigation(false)}
             width={25}
-            className={`font-semibold ${
-              showNavigation ? "block" : "hidden"
-            }`}
+            className={`font-semibold ${showNavigation ? "block" : "hidden"}`}
           />
         </div>
       </div>
@@ -53,9 +50,17 @@ const Header = () => {
         >
           Pricing
         </a>
-        <button className="bg-[#0E8388] hover:bg-[#246c6e] transform transition-all duration-150 text-white rounded-md py-1 px-5 w-auto shadow-lg">
-          Sign Up
-        </button>
+        <Link
+          href="/dashboard"
+          className=" hover:text-[#2E4F4F] duration-150 transform transition-all hover:underline"
+        >
+          Dashboard
+        </Link>
+        <Link href='/login'>
+          <button className="bg-[#0E8388] hover:bg-[#246c6e] transform transition-all duration-150 text-white rounded-md py-1 px-5 w-auto shadow-lg">
+            Sign Up
+          </button>
+        </Link>
       </div>
 
       <div

@@ -27,9 +27,12 @@ import FormPreview from "./FormPreview";
 import FieldSidebar from "./FieldSiderbar";
 import { generateFormCode } from "../utils/generateCode";
 import { useRouter } from "next/navigation";
+import { signOut } from "firebase/auth";
+import { auth } from "../../../firebase";
+import withAuth from "../withAuth";
 
 const DashboardMainView = () => {
-  const router = useRouter()
+  const router = useRouter();
   const [formFields, setFormFields] = useState([{ id: uuidv4(), fields: [] }]);
   const [selectedElement, setSelectedElement] = useState(null);
   const [selectedElementIndex, setSelectedElementIndex] = useState(null);
@@ -273,26 +276,37 @@ const DashboardMainView = () => {
     }
   };
 
-  const handleLogOut = () => {
-    router.push('/')
-  }
+  const handleLogOut = async () => {
+    try {
+      await signOut(auth);
+      router.push("/"); // Redirect to the login page after signing out
+    } catch (error) {
+      console.error("Error signing out", error);
+    }
+  };
 
   return (
-    <>
+    <ChakraProvider>
       <div className=" p-3 md:p-8">
         <div className=" flex flex-row justify-between mb-8 ">
           <div className="text-[#2E4F4F] font-extrabold text-2xl items-center justify-center flex">
             Custom Form Builder
           </div>
-          <button onClick={handleLogOut} className="bg-[#0E8388] hover:bg-[#246c6e] transform transition-all duration-150 text-white rounded-md py-1 px-5 w-auto shadow-lg">
-            Log Out
-          </button>
+          <div>
+            <p className=" mb-2">{auth.currentUser.displayName}</p>
+            <button
+              onClick={handleLogOut}
+              className="bg-[#0E8388] hover:bg-[#246c6e] transform transition-all duration-150 text-white rounded-md py-1 px-5 w-auto shadow-lg"
+            >
+              Log Out
+            </button>
+          </div>
         </div>
         <DragDropContext onDragEnd={onDragEnd}>
           <div className=" flex flex-col md:flex-row">
             <Droppable droppableId="sidebar" type="field">
               {(provided) => (
-                <div className=" md:w-72 w-full">
+                <div className=" md:w-60 w-full">
                   <FieldSidebar
                     innerRef={provided.innerRef}
                     {...provided.droppableProps}
@@ -508,38 +522,56 @@ const DashboardMainView = () => {
             <ModalHeader>Edit Field</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Input
-                name="label"
-                placeholder="Label"
-                value={editFieldData.label}
-                onChange={handleEditChange}
-                mb="10px"
-              />
-              <Select
-                name="type"
-                value={editFieldData.type}
-                onChange={handleEditChange}
-                mb="10px"
-              >
-                <option value="text">Text</option>
-                <option value="password">Password</option>
-                <option value="email">Email</option>
-                <option value="number">Number</option>
-                <option value="textarea">Textarea</option>
-                <option value="checkbox">Checkbox</option>
-                <option value="radio">Radio</option>
-              </Select>
+              <div className=" flex flex-row items-center gap-2">
+                <label className="w-16">Label:</label>
+                <Input
+                  name="label"
+                  placeholder="Label"
+                  value={editFieldData.label}
+                  onChange={handleEditChange}
+                  mb="10px"
+                />
+              </div>
+              <div className=" flex flex-row items-center gap-2">
+                <label className=" w-16">Type:</label>
+                <Select
+                  name="type"
+                  value={editFieldData.type}
+                  onChange={handleEditChange}
+                  mb="10px"
+                >
+                  <option value="text">Text</option>
+                  <option value="password">Password</option>
+                  <option value="email">Email</option>
+                  <option value="number">Number</option>
+                  <option value="textarea">Textarea</option>
+                  <option value="checkbox">Checkbox</option>
+                  <option value="radio">Radio</option>
+                </Select>
+              </div>
+              <div className=" flex flex-row gap-2 items-center">
+                <label className=" text-base flex-1 whitespace-nowrap">
+                  Label Position
+                </label>
+                <Select
+                  name="labelPosition"
+                  value={
+                    editFieldData.type === "checkbox"
+                      ? "left"
+                      : editFieldData.labelPosition
+                  }
+                  disabled={editFieldData.type === "checkbox"}
+                  onChange={handleEditChange}
+                  mb="10px"
+                >
+                  <option value="above">Label Above</option>
+                  <option value="left">Label Left</option>
+                </Select>
+              </div>
               <Input
                 name="placeholder"
                 placeholder="Placeholder"
                 value={editFieldData.placeholder}
-                onChange={handleEditChange}
-                mb="10px"
-              />
-              <Input
-                name="defaultValue"
-                placeholder="Default Value"
-                value={editFieldData.defaultValue}
                 onChange={handleEditChange}
                 mb="10px"
               />
@@ -565,20 +597,6 @@ const DashboardMainView = () => {
               >
                 Required
               </Checkbox>
-              <Select
-                name="labelPosition"
-                value={
-                  editFieldData.type === "checkbox"
-                    ? "left"
-                    : editFieldData.labelPosition
-                }
-                disabled={editFieldData.type === "checkbox"}
-                onChange={handleEditChange}
-                mb="10px"
-              >
-                <option value="above">Label Above</option>
-                <option value="left">Label Left</option>
-              </Select>
             </ModalBody>
             <ModalFooter>
               <Button colorScheme="blue" onClick={handleEditSubmit}>
@@ -595,8 +613,8 @@ const DashboardMainView = () => {
           </ModalContent>
         </Modal>
       </div>
-    </>
+    </ChakraProvider>
   );
 };
 
-export default DashboardMainView;
+export default withAuth(DashboardMainView);
