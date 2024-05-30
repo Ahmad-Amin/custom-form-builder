@@ -152,7 +152,7 @@ const GeneratedForm = () => {
       `
         )
         .join('')}
-      <div class=" flex flex-row justify-end">
+      <div className=" flex flex-row justify-end">
         <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-md">
           Submit
         </button>
