@@ -11,9 +11,11 @@ import OfficeWorkingAnimation from "../../app/animations/office-working.json";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import toast from "react-hot-toast";
 const Lottie = dynamic(() => import("lottie-react"), {
   ssr: false,
 });
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -28,6 +30,9 @@ const Login = () => {
       }
       console.log(response);
     } catch (error) {
+      const errorMessage = firebaseErrorMessages[errorCode] || 'An unexpected error occurred. Please try again.';
+      toast.error('Error signing in with email and password')
+      console.log(error.message);
       console.error("Error signing in with email and password", error);
     }
   };
@@ -40,6 +45,8 @@ const Login = () => {
         router.push("/dashboard");
       }
     } catch (error) {
+      toast.error("Error signing in with Google")
+      console.log(error.message)
       console.error("Error signing in with Google", error);
     }
   };
