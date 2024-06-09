@@ -132,12 +132,12 @@ const Login = () => {
                   >
                     Sign in
                   </button>
-                  <p className=" text-sm">
+                  {/* <p className=" text-sm">
                     New To Platform? <Link className=" text-blue-500 underline" href="/sign-up">Create New Account</Link>
-                  </p>
+                  </p> */}
                   <hr />
 
-                  <button
+                  {/* <button
                     type="submit"
                     onClick={signInWithGoogle}
                     className="w-full flex flex-row gap-3 items-center justify-center bg-white hover:bg-gray-100 text-black border font-medium rounded-lg text-base px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
@@ -175,7 +175,7 @@ const Login = () => {
                       </svg>
                     </div>
                     <p>Sign in with Google</p>
-                  </button>
+                  </button> */}
                 </form>
               </div>
             </div>

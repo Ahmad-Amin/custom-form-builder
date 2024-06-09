@@ -37,7 +37,7 @@ const MainTopSection = () => {
           </strong>
         </p>
         <div className=" flex justify-center mt-8">
-          <Link href="/login">
+          <Link href="#getStarted">
             <button className="bg-[#0E8388] hover:bg-[#246c6e] transform transition-all duration-150 text-white rounded-md py-2 px-5 w-auto shadow-lg">
               Register Now
             </button>

@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import { CheckCircleIcon } from "@heroicons/react/24/outline";
+import Link from 'next/link';
 
 const Plans = () => {
   return (
@@ -18,16 +19,19 @@ const Plans = () => {
         <div className=" bg-[#CBE4DE] rounded-xl flex flex-col items-center shadow-lg w-auto md:w-[600px]">
           <div className=' w-full p-6'>
             <div className=' flex flex-row items-center gap-3 justify-between'>
-            <p className=' text-lg text-primaryText font-bold'>Best Developer Suit</p>
-            <p className=' bg-[#0E8388] text-lg text-white font-bold px-2 py-1 rounded-lg '>Life Time Access</p>
+              <p className=' text-lg text-primaryText font-bold'>Best Developer Suit</p>
+              <p className=' bg-[#0E8388] text-lg text-white font-bold px-2 py-1 rounded-lg '>Life Time Access</p>
             </div>
             <p className=' text-secondaryText text-base mt-1'>Best for personal use</p>
 
             <div className=' flex flex-row gap-2 items-end mt-10' >
-              <p className=' text-5xl font-black'>$29.99</p><p className=' text-sm text-secondaryText'></p>
+              <p className=' text-5xl font-black'>$19.99</p><p className=' text-sm text-secondaryText'></p>
             </div>
 
-            <button className='bg-[#0E8388] hover:bg-[#246c6e] transform transition-all duration-150 text-white rounded-md py-3 my-7 w-full shadow-lg'>Get Started</button>
+            <Link href='#getStarted'>
+              <button className='bg-[#0E8388] hover:bg-[#246c6e] transform transition-all duration-150 text-white rounded-md py-3 my-7 w-full shadow-lg'>Get Started</button>
+            </Link>
+
 
 
             <div className=' mt-5'>
