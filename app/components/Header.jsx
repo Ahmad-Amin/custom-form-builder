@@ -16,7 +16,7 @@ const Header = () => {
     <div className=" flex flex-col md:flex-row justify-between p-6 md:p-8 md:px-20">
       <div className=" flex flex-row justify-between">
         <div className="text-[#2E4F4F] font-extrabold text-2xl items-center justify-center flex">
-          Custom Form Builder
+          Custom Form Builder test
         </div>
         <div className=" md:hidden">
           <Bars3Icon
