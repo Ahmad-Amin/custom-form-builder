@@ -18,7 +18,7 @@ const getGridClass = (fieldCount) => {
 const FormPreview = ({ formFields }) => {
   return (
     <>
-      <h1 className=" text-2xl font-bold text-center">Live Form Preview</h1>
+      <h1 className="text-2xl font-bold text-center">Live Form Preview</h1>
       <form className="bg-white p-6 rounded-lg shadow-md">
         {formFields.map((group, groupIndex) => (
           <div
@@ -39,7 +39,15 @@ const FormPreview = ({ formFields }) => {
                         {field.label}
                       </label>
                     )}
-                    {field.type === "textarea" ? (
+
+                    {/* Dropdown Field */}
+                    {field.type === "dropdown" ? (
+                      <select className={field.classes.input}>
+                        {field.options.map((option, index) => (
+                          <option key={index} value={option}>{option}</option>
+                        ))}
+                      </select>
+                    ) : field.type === "textarea" ? (
                       <textarea
                         placeholder={field.placeholder}
                         defaultValue={field.defaultValue}
@@ -47,7 +55,7 @@ const FormPreview = ({ formFields }) => {
                         rows={6}
                       />
                     ) : field.type === "checkbox" ? (
-                      <div className=" flex flex-row gap-3 h-full items-start">
+                      <div className="flex flex-row gap-3 h-full items-start">
                         <input
                           type="checkbox"
                           defaultChecked={field.defaultValue}
@@ -57,21 +65,6 @@ const FormPreview = ({ formFields }) => {
                           {field.label}
                         </label>
                       </div>
-                    ) : field.type === "radio" ? (
-                      field.options &&
-                      Array.isArray(field.options) &&
-                      field.options.map((option, optIndex) => (
-                        <label key={optIndex} className="ml-2">
-                          <input
-                            type="radio"
-                            name={field.name} // Set the same name attribute
-                            value={option}
-                            defaultChecked={field.defaultValue === option}
-                            className="mr-1"
-                          />
-                          {option}
-                        </label>
-                      ))
                     ) : (
                       <input
                         type={field.type}
@@ -88,7 +81,15 @@ const FormPreview = ({ formFields }) => {
                         {field.label}
                       </label>
                     )}
-                    {field.type === "textarea" ? (
+
+                    {/* Dropdown Field for Label on the Left */}
+                    {field.type === "dropdown" ? (
+                      <select className={field.classes.input}>
+                        {field.options.map((option, index) => (
+                          <option key={index} value={option}>{option}</option>
+                        ))}
+                      </select>
+                    ) : field.type === "textarea" ? (
                       <textarea
                         placeholder={field.placeholder}
                         defaultValue={field.defaultValue}
@@ -96,7 +97,7 @@ const FormPreview = ({ formFields }) => {
                         rows={6}
                       />
                     ) : field.type === "checkbox" ? (
-                      <div className=" flex flex-row gap-3 h-full items-start">
+                      <div className="flex flex-row gap-3 h-full items-start">
                         <input
                           type="checkbox"
                           defaultChecked={field.defaultValue}
@@ -106,21 +107,6 @@ const FormPreview = ({ formFields }) => {
                           {field.label}
                         </label>
                       </div>
-                    ) : field.type === "radio" ? (
-                      field.options &&
-                      Array.isArray(field.options) &&
-                      field.options.map((option, optIndex) => (
-                        <label key={optIndex} className="ml-2">
-                          <input
-                            type="radio"
-                            name={field.name} // Set the same name attribute
-                            value={option}
-                            defaultChecked={field.defaultValue === option}
-                            className="mr-1"
-                          />
-                          {option}
-                        </label>
-                      ))
                     ) : (
                       <input
                         type={field.type}

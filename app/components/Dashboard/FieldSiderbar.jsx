@@ -7,9 +7,10 @@ const fieldTypes = [
   { id: "password", label: "Password" },
   { id: "textarea", label: "Textarea" },
   { id: "checkbox", label: "Checkbox" },
-  { id: "radio", label: "Radio" },
   { id: "number", label: "Number" },
+  { id: "dropdown", label: "Dropdown" },
 ];
+
 
 const FieldSidebar = ({ innerRef, provided }) => {
   return (

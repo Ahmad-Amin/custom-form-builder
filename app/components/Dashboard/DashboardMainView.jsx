@@ -222,10 +222,17 @@ const DashboardMainView = () => {
 
   const handleEditClick = (groupIndex, fieldIndex) => {
     const field = formFields[groupIndex].fields[fieldIndex];
-    setEditFieldData({ ...field, options: field.options.join(", ") });
+  
+    setEditFieldData({
+      ...field,
+      type: field.type || "text",  // Ensure type remains unchanged
+      options: field.options ? field.options.join(", ") : "",  // Convert array to string for input
+    });
+  
     setEditFieldIndex({ groupIndex, fieldIndex });
     setEditModalOpen(true);
   };
+  
 
   const handleEditChange = (e) => {
     const { name, value } = e.target;
@@ -235,13 +242,17 @@ const DashboardMainView = () => {
   const handleEditSubmit = () => {
     const updatedFields = [...formFields];
     const { groupIndex, fieldIndex } = editFieldIndex;
+  
     updatedFields[groupIndex].fields[fieldIndex] = {
       ...editFieldData,
-      options: editFieldData.options.split(",").map((option) => option.trim()),
+      options: editFieldData.type === "dropdown" 
+        ? editFieldData.options.split(",").map(option => option.trim()) // Only for dropdown
+        : editFieldData.options,
     };
+  
     setFormFields(updatedFields);
     setEditModalOpen(false);
-  };
+  };  
 
   const getItemStyle = (isDragging, draggableStyle) => ({
     userSelect: "none",
@@ -546,7 +557,7 @@ const DashboardMainView = () => {
                   <option value="number">Number</option>
                   <option value="textarea">Textarea</option>
                   <option value="checkbox">Checkbox</option>
-                  <option value="radio">Radio</option>
+                  <option value="dropdown">Dropdown</option>
                 </Select>
               </div>
               <div className=" flex flex-row gap-2 items-center">
@@ -584,6 +595,14 @@ const DashboardMainView = () => {
                   mb="10px"
                 />
               )}
+              {editFieldData.type === "dropdown" && (
+  <Input
+    name="options"
+    placeholder="Options (comma-separated)"
+    value={editFieldData.options}
+    onChange={handleEditChange}
+  />
+)}
               <Checkbox
                 name="isRequired"
                 isChecked={editFieldData.isRequired}
